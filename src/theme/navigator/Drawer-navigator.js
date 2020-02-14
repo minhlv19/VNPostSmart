@@ -9,8 +9,36 @@ import {createStackNavigator} from 'react-navigation-stack';
 import KpiScreen from '../screen/kpi/KPIScreen';
 import TimesheetScreen from '../screen/ timesheets/TimesheetScreen';
 import HomeScreen from '../screen/Home/HomeScreen';
-import CustomDrawer from './CustomDrawer';
 
+import CustomDrawer from './CustomDrawer';
+import TripHistoryScreen from '../screen/triphistory/TripHistoryScreen';
+
+import DriversalariesScreen from '../screen/driversalaries/DriversalariesScreen';
+import GeneralnotificationScreen from '../screen/ generalnotification/GeneralnotificationScreen';
+const Driversalaries_Stacknaviation=createStackNavigator({
+    DriversalariesScreen:{
+        screen:DriversalariesScreen,
+        navigationOptions:({navigation}) =>({
+            headerLeft:<DrawerNavigator navigationProps={navigation} />,
+            headerStyle:{
+                backgroundColor:'#fcb71e'
+            }
+        })
+
+    }
+})
+
+const Triphistory_StackNavigator=createStackNavigator({
+    TripHistoryScreen:{
+        screen:TripHistoryScreen,
+        navigationOptions:({navigation}) =>({
+            headerLeft:<DrawerNavigator navigationProps={navigation} />,
+            headerStyle:{
+                backgroundColor:'#fcb71e'
+            }
+        })
+    }
+})
 class DrawerNavigator extends Component {
     toggleDrawer = () => {
         this.props.navigationProps.toggleDrawer();
@@ -65,8 +93,25 @@ const Timeline_Stacknavigator = createStackNavigator({
     }
 
 
+});
+const Generalnotification_Stacknavigation=createStackNavigator({
+    Generalnotification:{
+        screen:GeneralnotificationScreen,
+        navigationOptions:({navigation}) =>({
+            headerLeft:<DrawerNavigator navigationProps={navigation} />,
+            headerStyle:{
+                backgroundColor:'#fcb71e'
+            }
+        })
+    }
 })
 const Drawer = createDrawerNavigator({
+    Generalnotification:{
+        screen:Generalnotification_Stacknavigation,
+        navigationOptions:{
+            drawerLabel:'Generalnotification'
+        }
+    },
     Home:{
         screen: Home_StackNavigator,
         navigationOptions:{
@@ -74,6 +119,21 @@ const Drawer = createDrawerNavigator({
         }
 
     },
+    Triphistory:{
+            screen:Triphistory_StackNavigator,
+            navigationOptions:{
+                drawerLabel:'Triphistory'
+            }
+
+    },
+
+    Driversalaries:{
+        screen:Driversalaries_Stacknaviation,
+        navigationOptions:{
+            drawerLabel:'Driversalaries'
+        }
+    },
+
     KPI:{
         screen:KPI_StackNavigator,
         navigationOptions:{
@@ -81,7 +141,7 @@ const Drawer = createDrawerNavigator({
         }
     },
     Time:{
-        screen:KPI_StackNavigator,
+        screen:Timeline_Stacknavigator,
         navigationOptions:{
             drawerLabel:'Time'
         }

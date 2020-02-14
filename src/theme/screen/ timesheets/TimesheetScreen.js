@@ -4,7 +4,7 @@ class TimesheetScreen extends Component {
     render() {
         return (
             <View>
-                <Text>vdfb</Text>
+                <Text>bang cham cong</Text>
             </View>
         );
     }

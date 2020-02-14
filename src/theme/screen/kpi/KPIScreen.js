@@ -4,7 +4,7 @@ class KpiScreen extends Component {
     render() {
         return (
             <View>
-                <Text>cvfghj</Text>
+                <Text>KPI</Text>
             </View>
         );
     }

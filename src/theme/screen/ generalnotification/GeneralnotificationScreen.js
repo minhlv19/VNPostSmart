@@ -4,7 +4,7 @@ class GeneralnotificationScreen extends Component {
     render() {
         return (
             <View>
-                <Text>dszfgcvnbm </Text>
+                <Text>Thông báo chung</Text>
             </View>
         );
     }

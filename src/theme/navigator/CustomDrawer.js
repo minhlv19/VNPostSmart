@@ -23,17 +23,31 @@ export default class CustomDrawer extends Component {
                     </View>
 
                     <View style={[styles.screenStyle]}>
-                        <Image source={require('../../asset/image/da-nhan-xanh.png')} style={{width:40,height:40}} />
+                        <Image source={require('../../asset/image/home.png')} style={{width:20,height:20}} />
                         <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='Home') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Home')}>Trang Chính</Text>
                     </View>
-                    <View style={[styles.screenStyle, (this.props.activeItemKey=='KPI') ? styles.activeBackgroundColor : null]}>
-                        <Image source={require('../../asset/image/da-nhan-xanh.png')} style={{width:40,height:40}} />
-                        <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='KPI') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('KPI')}>KPI</Text>
+                    <View style={[styles.screenStyle]}>
+                        <Image source={require('../../asset/image/lich-su-chuyen.png')} style={{width:20,height:20}} />
+                        <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='Triphistory') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Triphistory')}>Lịch sử chuyến đi</Text>
                     </View>
                     <View style={[styles.screenStyle, (this.props.activeItemKey=='Time') ? styles.activeBackgroundColor : null]}>
-                        <Image source={require('../../asset/image/da-nhan-xanh.png')} style={{width:40,height:40}} />
+                        <Image source={require('../../asset/image/bang-cham-cong.png')} style={{width:20,height:20}} />
                         <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='Time') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Time')}>Bảng chấm công</Text>
                     </View>
+                    <View style={[styles.screenStyle, (this.props.activeItemKey=='Driversalaries') ? styles.activeBackgroundColor : null]}>
+                        <Image source={require('../../asset/image/luong-tai-xe.png')} style={{width:20,height:20}} />
+                        <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='Driversalaries') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Driversalaries')}>Lương tài xế</Text>
+                    </View>
+                    <View style={[styles.screenStyle, (this.props.activeItemKey=='KPI') ? styles.activeBackgroundColor : null]}>
+                        <Image source={require('../../asset/image/kpi.png')} style={{width:20,height:20}} />
+                        <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='KPI') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('KPI')}>KPI</Text>
+                    </View>
+                    <View style={[styles.screenStyle, (this.props.activeItemKey=='Generalnotification') ? styles.activeBackgroundColor : null]}>
+                        <Image source={require('../../asset/image/notification.png')} style={{width:20,height:20}} />
+                        <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='Generalnotification') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Generalnotification')}>Thông báo chung</Text>
+                    </View>
+
+
                 </View>
             </View>
         )

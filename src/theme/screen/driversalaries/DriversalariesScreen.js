@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {View,Text} from 'react-native'
-class HistoryScreen extends Component {
+class DriversalariesScreen extends Component {
     render() {
         return (
             <View>
-                <Text>Các chuyến đa chạy</Text>
+                <Text>Lương tài xế</Text>
             </View>
         );
     }
 }
 
-export default HistoryScreen;
+export default DriversalariesScreen;
