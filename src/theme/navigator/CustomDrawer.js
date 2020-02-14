@@ -71,6 +71,6 @@ const styles = StyleSheet.create({
         color: '#00adff'
     },
     activeBackgroundColor: {
-        backgroundColor: 'grey'
+
     }
 });
