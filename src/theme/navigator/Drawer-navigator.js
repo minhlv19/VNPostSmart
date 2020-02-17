@@ -9,12 +9,11 @@ import {createStackNavigator} from 'react-navigation-stack';
 import KpiScreen from '../screen/kpi/KPIScreen';
 import TimesheetScreen from '../screen/ timesheets/TimesheetScreen';
 import HomeScreen from '../screen/Home/HomeScreen';
-
 import CustomDrawer from './CustomDrawer';
 import TripHistoryScreen from '../screen/triphistory/TripHistoryScreen';
-
 import DriversalariesScreen from '../screen/driversalaries/DriversalariesScreen';
 import GeneralnotificationScreen from '../screen/ generalnotification/GeneralnotificationScreen';
+
 const Driversalaries_Stacknaviation=createStackNavigator({
     DriversalariesScreen:{
         screen:DriversalariesScreen,
@@ -58,7 +57,7 @@ class DrawerNavigator extends Component {
     }
 }
 const Home_StackNavigator = createStackNavigator({
-        HomeScreen: {
+    HomeScreen: {
             screen: HomeScreen,
             navigationOptions:({navigation}) =>({
                 headerLeft:<DrawerNavigator navigationProps={navigation} />,
@@ -106,18 +105,18 @@ const Generalnotification_Stacknavigation=createStackNavigator({
     }
 })
 const Drawer = createDrawerNavigator({
-    Generalnotification:{
-        screen:Generalnotification_Stacknavigation,
-        navigationOptions:{
-            drawerLabel:'Generalnotification'
-        }
-    },
     Home:{
         screen: Home_StackNavigator,
         navigationOptions:{
             drawerLabel:'Home'
         }
 
+    },
+    Generalnotification:{
+        screen:Generalnotification_Stacknavigation,
+        navigationOptions:{
+            drawerLabel:'Generalnotification'
+        }
     },
     Triphistory:{
             screen:Triphistory_StackNavigator,
