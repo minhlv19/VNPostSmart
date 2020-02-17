@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View,Text,Image} from 'react-native';
+import {View,Text,Image,TouchableOpacity} from 'react-native';
 const deviceWidth = Dimensions.get("window").width;
 class Header extends Component {
     toggleDrawer = () => {
@@ -9,10 +9,7 @@ class Header extends Component {
     render() {
         return (
             <View style={{flex: 0.8}}>
-
             </View>
-
-
         );
     }
 }
