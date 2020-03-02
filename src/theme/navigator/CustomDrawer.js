@@ -35,9 +35,9 @@ export default class CustomDrawer extends Component {
                         <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='Time') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Time')}>Bảng chấm công</Text>
                     </View>
                     <View style={[styles.screenStyle, (this.props.activeItemKey=='Driversalaries') ? styles.activeBackgroundColor : null]}>
-                        <Image source={require('../../asset/image/luong-tai-xe.png')} style={{width:20,height:20}} />
-                        <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='Driversalaries') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Driversalaries')}>Lương tài xế</Text>
-                    </View>
+                    <Image source={require('../../asset/image/luong-tai-xe.png')} style={{width:20,height:20}} />
+                    <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='Driversalaries') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Driversalaries')}>Lương tài xế</Text>
+                </View>
                     <View style={[styles.screenStyle, (this.props.activeItemKey=='KPI') ? styles.activeBackgroundColor : null]}>
                         <Image source={require('../../asset/image/kpi.png')} style={{width:20,height:20}} />
                         <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='KPI') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('KPI')}>KPI</Text>

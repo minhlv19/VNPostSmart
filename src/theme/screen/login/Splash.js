@@ -5,7 +5,7 @@ class Splash extends Component{
   render(){
     return(
       <View style={styles.container}>
-        <Text style={styles.text}>WELCOME TO VNPort-Smart</Text>
+        <Text style={styles.text}>WELCOME TO VNPost-Smart</Text>
         <Image style={styles.image}
                source={require('../../../asset/image/logo.png')}>
         </Image>

@@ -3,37 +3,85 @@ import {
   View, Text, TouchableOpacity, TextInput,
   StyleSheet, Image, KeyboardAvoidingView,
   CheckBox, SafeAreaView, StatusBar, Keyboard,
-  TouchableWithoutFeedback,
+  TouchableWithoutFeedback, Alert, AsyncStorage,
 } from 'react-native';
 import construct from '@babel/runtime/helpers/esm/construct';
 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       hidePassword: true,
-      TextInputPhone: '',
-      TextInputPassword: '',
-
+      phone: '',
+      password: '',
+      checkLogin: true,
+      loginDetails: true,
+      kq: '',
+      token: '',
     };
   }
-  CheckTextInput = () => {
-    if (this.state.TextInputPhone != '') {
-      if (this.state.TextInputPassword != '') {
-        alert('Success')
-      } else {
-        alert('Please Enter Password');
+
+  CheckTextInput = async() => {
+
+    fetch('http://kidsnow.edu.vn/api/login', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        phone: this.state.phone,
+        password: this.state.password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log(responseJson);
+        //this.setState({kq: responseJson["token"],});
+        // this.setState({phone: responseJson["phone"],});
+        // this.setState({password: responseJson["password"],});*/
+        return ()=>navigate('Logout');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    const {phone, password} = this.state;
+    let loginDetails = {
+      phone: phone,
+      password: password,
+    }
+    if (this.props.type !== 'Login') {
+      AsyncStorage.setItem('kq', JSON.stringify(loginDetails));
+      Keyboard.dismiss();
+      this.login();
+    } else if (this.props.type === 'Login') {
+      try {
+        let loginDetails = await AsyncStorage.getItem('loginDetails');
+        let ld = JSON.parse(loginDetails);
+        if(this.state.phone == '' || this.state.password == ''){
+        } else {
+          if(this.state.phone != phone && this.state.password == password){
+            alert('Sai thông tin đăng nhập.')
+          } else if(this.state.phone == phone && this.state.password != password){
+            alert('Sai mật khẩu.')
+          } else if(this.state.phone != phone && this.state.password != password){
+            alert('Nhập thông tin hợp lệ.')
+          } else {
+            alert('Thành công.')
+          }
+        }
+      } catch (error) {
+        alert(error);
       }
-    } else {
-      alert('Please Enter Phone');
     }
   };
 
   managePasswordVisibility = () => {
     this.setState({hidePassword: !this.state.hidePassword});
   };
-
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle="light-content"/>
@@ -47,19 +95,21 @@ class Login extends Component {
             </View>
             <View style={styles.infoContainer}>
               <TextInput style={styles.input}
-                         placeholder="Email đăng nhập"
-                         keyboardType='email-address'
+                         placeholder="Thông tin đăng nhập"
+                         keyboardType='numeric'
                          returnKeyType='next'
                          autoCorrect={false}
-                         onChangeText={TextInputPhone => this.setState({TextInputPhone})}
+                         onChangeText={(phone) => this.setState({phone})}
                          onSubmitEditing={() => this.refs.txtPassword.focus()}
+                         value={this.state.phone}
               />
               <View style={styles.pass}>
                 <TextInput underlineColorAndroid="transparent" style={styles.input}
                            placeholder="Mật khẩu"
                            returnKeyType='go'
-                           onChangeText={TextInputPassword => this.setState({TextInputPassword})}
+                           onChangeText={(password) => this.setState({password})}
                            secureTextEntry={this.state.hidePassword}
+                           value={this.state.password}
                 />
                 <TouchableOpacity style={styles.iconpass} onPress={this.managePasswordVisibility}>
                   <Image source={(this.state.hidePassword)
@@ -68,13 +118,19 @@ class Login extends Component {
                          style={styles.hide}/>
                 </TouchableOpacity>
               </View>
-              <TouchableOpacity onPress={this.CheckTextInput} style={styles.buttonContainer}>
+              <TouchableOpacity  onPress={this.state.CheckTextInput} style={styles.buttonContainer}>
                 <Text style={styles.buttonText}>Login</Text>
               </TouchableOpacity>
+              <View style={{
+                flex: 3,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <Text>{this.state.kq}</Text>
+              </View>
             </View>
           </View>
         </TouchableWithoutFeedback>
-
       </SafeAreaView>
     );
   }
@@ -109,11 +165,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     fontSize: 18,
     backgroundColor: '#fff',
-    paddingVertical: 10,
+    paddingVertical: 5,
     borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowRadius: 20,
   },
   buttonContainer: {
     backgroundColor: '#101fca',
