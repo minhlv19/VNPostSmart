@@ -14,15 +14,14 @@ class Login extends Component {
       hidePassword: true,
       phone: '',
       password: '',
-      checkLogin: true,
-      loginDetails: true,
-      kq: '',
+      checkLogin: 0,
       token: '',
+      kq: null
     };
   }
 
   CheckTextInput = async() => {
-
+    this.props.navigation.navigate('Login');
     fetch('http://kidsnow.edu.vn/api/login', {
       method: 'POST',
       headers: {
@@ -36,45 +35,22 @@ class Login extends Component {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson);
+         console.log(responseJson);
         //this.setState({kq: responseJson["token"],});
         // this.setState({phone: responseJson["phone"],});
         // this.setState({password: responseJson["password"],});*/
-        return ()=>navigate('Logout');
+        //this.setState({checkLogin:responseJson["token"],});
+        if(responseJson.success === true){
+          this.props.navigation.navigate('Logout');
+        }
+        else{
+          // console.warn(responseJson);
+          Alert.alert("Thông báo!","Vui lòng điền đúng thông tin đăng nhập!");
+        }
       })
       .catch((error) => {
         console.error(error);
       });
-
-    const {phone, password} = this.state;
-    let loginDetails = {
-      phone: phone,
-      password: password,
-    }
-    if (this.props.type !== 'Login') {
-      AsyncStorage.setItem('kq', JSON.stringify(loginDetails));
-      Keyboard.dismiss();
-      this.login();
-    } else if (this.props.type === 'Login') {
-      try {
-        let loginDetails = await AsyncStorage.getItem('loginDetails');
-        let ld = JSON.parse(loginDetails);
-        if(this.state.phone == '' || this.state.password == ''){
-        } else {
-          if(this.state.phone != phone && this.state.password == password){
-            alert('Sai thông tin đăng nhập.')
-          } else if(this.state.phone == phone && this.state.password != password){
-            alert('Sai mật khẩu.')
-          } else if(this.state.phone != phone && this.state.password != password){
-            alert('Nhập thông tin hợp lệ.')
-          } else {
-            alert('Thành công.')
-          }
-        }
-      } catch (error) {
-        alert(error);
-      }
-    }
   };
 
   managePasswordVisibility = () => {
@@ -118,18 +94,11 @@ class Login extends Component {
                          style={styles.hide}/>
                 </TouchableOpacity>
               </View>
-              <TouchableOpacity  onPress={this.state.CheckTextInput} style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>Login</Text>
-              </TouchableOpacity>
-              <View style={{
-                flex: 3,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <Text>{this.state.kq}</Text>
-              </View>
-            </View>
-          </View>
+          <TouchableOpacity  onPress={this.CheckTextInput} style={styles.buttonContainer}>
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
+        </View>
+      </View>
         </TouchableWithoutFeedback>
       </SafeAreaView>
     );
