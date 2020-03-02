@@ -41,7 +41,7 @@ class Login extends Component {
         // this.setState({password: responseJson["password"],});*/
         //this.setState({checkLogin:responseJson["token"],});
         if(responseJson.success === true){
-          this.props.navigation.navigate('Logout');
+          this.props.navigation.navigate('DrawerNavigator');
         }
         else{
           // console.warn(responseJson);

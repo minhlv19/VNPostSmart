@@ -16,4 +16,4 @@ console.disableYellowBox=true;
 
 
 
-AppRegistry.registerComponent(appName, () => gestureHandlerRootHOC(ScreenLogin));
+AppRegistry.registerComponent(appName, () => gestureHandlerRootHOC(Main));
