@@ -8,7 +8,7 @@ import {createAppContainer} from 'react-navigation';
 /*class Main extends Component {
     render() {
         return (
-           <DrawerNavigator/>
+           <DrawerNavigator/> 
         );
     }
 }*/
