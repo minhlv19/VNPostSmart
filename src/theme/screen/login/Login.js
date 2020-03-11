@@ -14,9 +14,7 @@ class Login extends Component {
       hidePassword: true,
       phone: '',
       password: '',
-      checkLogin: 0,
       token: '',
-      kq: null
     };
   }
 
@@ -59,48 +57,59 @@ class Login extends Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
-      <SafeAreaView style={styles.container}>
-        <StatusBar barStyle="light-content"/>
-        <TouchableWithoutFeedback style={styles.container}
-                                  onPress={Keyboard.dismiss}>
-          <View style={styles.logoContainer}>
+        <SafeAreaView style={styles.container}>
+          <StatusBar barStyle="light-content"/>
+
+          <TouchableWithoutFeedback style={styles.container}
+                                    onPress={Keyboard.dismiss}>
             <View style={styles.logoContainer}>
-              <Image style={styles.logo}
-                     source={require('../../../asset/image/logo.png')}>
-              </Image>
-            </View>
-            <View style={styles.infoContainer}>
-              <TextInput style={styles.input}
-                         placeholder="Thông tin đăng nhập"
-                         keyboardType='numeric'
-                         returnKeyType='next'
-                         autoCorrect={false}
-                         onChangeText={(phone) => this.setState({phone})}
-                         onSubmitEditing={() => this.refs.txtPassword.focus()}
-                         value={this.state.phone}
-              />
-              <View style={styles.pass}>
-                <TextInput underlineColorAndroid="transparent" style={styles.input}
-                           placeholder="Mật khẩu"
-                           returnKeyType='go'
-                           onChangeText={(password) => this.setState({password})}
-                           secureTextEntry={this.state.hidePassword}
-                           value={this.state.password}
+              <View style={styles.logoContainer}>
+                <Image style={styles.logo}
+                       source={require('../../../asset/image/logo.png')}>
+                </Image>
+              </View>
+              <View style={styles.infoContainer}>
+                <TextInput style={styles.input}
+                           placeholder="Thông tin đăng nhập"
+                           keyboardType='numeric'
+                           returnKeyType='next'
+                           autoCorrect={false}
+                           onChangeText={(phone) => this.setState({phone})}
+                           onSubmitEditing={() => this.refs.txtPassword.focus()}
+                           value={this.state.phone}
                 />
-                <TouchableOpacity style={styles.iconpass} onPress={this.managePasswordVisibility}>
-                  <Image source={(this.state.hidePassword)
-                    ? require('../../../asset/image/hide.png')
-                    : require('../../../asset/image/uhide.png')}
-                         style={styles.hide}/>
+                <View style={styles.pass}>
+                  <TextInput underlineColorAndroid="transparent" style={styles.input}
+                             placeholder="Mật khẩu"
+                             returnKeyType='go'
+                             onChangeText={(password) => this.setState({password})}
+                             secureTextEntry={this.state.hidePassword}
+                             value={this.state.password}
+                  />
+                  <TouchableOpacity style={styles.iconpass} onPress={this.managePasswordVisibility}>
+                    <Image source={(this.state.hidePassword)
+                        ? require('../../../asset/image/hide.png')
+                        : require('../../../asset/image/uhide.png')}
+                           style={styles.hide}/>
+                  </TouchableOpacity>
+                </View>
+                <TouchableOpacity  onPress={this.CheckTextInput} style={styles.buttonContainer}>
+                  <Text style={styles.buttonText}>Login</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Text style={{color: '#101fca', fontSize: 13,
+                                textAlign: 'right', fontStyle: 'italic'}}>Quên mật khẩu?</Text>
                 </TouchableOpacity>
               </View>
-          <TouchableOpacity  onPress={this.CheckTextInput} style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>Login</Text>
-            </TouchableOpacity>
-        </View>
-      </View>
-        </TouchableWithoutFeedback>
-      </SafeAreaView>
+
+              <View style={{marginBottom: 0}}>
+                <Text style={{color: '#fff', textAlign: 'center', fontSize: 12}}>TỔNG CÔNG TY BƯU ĐIỆN VIỆT NAM</Text>
+                <Text style={{color: '#fff', textAlign: 'center', fontSize: 12}}>Số 5 Phạm Hùng - Mỹ Đình 2 - Nam Từ Liêm - Hà Nội</Text>
+                <Text style={{color: '#fff', textAlign: 'center', fontSize: 12}}>Hotline: 19008000</Text>
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+        </SafeAreaView>
     );
   }
 }
