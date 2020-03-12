@@ -7,16 +7,16 @@ import {createDrawerNavigator} from 'react-navigation-drawer';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import KpiScreen from '../screen/kpi/KPIScreen';
-import TimesheetScreen from '../screen/ timesheets/TimesheetScreen';
+import RefusedScreen from '../screen/refused/RefusedScreen';
 import HomeScreen from '../screen/Home/HomeScreen';
 import CustomDrawer from './CustomDrawer';
 import TripHistoryScreen from '../screen/triphistory/TripHistoryScreen';
-import DriversalariesScreen from '../screen/driversalaries/DriversalariesScreen';
+import ChangePassword from '../screen/login/ChangePassword';
 import GeneralnotificationScreen from '../screen/ generalnotification/GeneralnotificationScreen';
 
-const Driversalaries_Stacknaviation=createStackNavigator({
-    DriversalariesScreen:{
-        screen:DriversalariesScreen,
+const ChangePassword_Stacknaviation=createStackNavigator({
+    ChangePassword:{
+        screen:ChangePassword,
         navigationOptions:({navigation}) =>({
             headerLeft:<DrawerNavigator navigationProps={navigation} />,
             headerStyle:{
@@ -68,6 +68,11 @@ const Home_StackNavigator = createStackNavigator({
                     marginTop:24,
                     color:'#fff'
                 },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+
+                },
                 title:'Lệnh mới'
             })
 
@@ -86,9 +91,9 @@ const KPI_StackNavigator = createStackNavigator({
         })
     }
 })
-const Timeline_Stacknavigator = createStackNavigator({
-    TimesheetScreen:{
-        screen:TimesheetScreen,
+const Refusede_Stacknavigator = createStackNavigator({
+    RefusedScreen:{
+        screen:RefusedScreen,
         navigationOptions:({navigation}) =>({
            headerLeft:<DrawerNavigator navigationProps={navigation} />,
             headerStyle:{
@@ -134,10 +139,10 @@ const Drawer = createDrawerNavigator({
 
     },
 
-    Driversalaries:{
-        screen:Driversalaries_Stacknaviation,
+    ChangePassword:{
+        screen:ChangePassword_Stacknaviation,
         navigationOptions:{
-            drawerLabel:'Driversalaries'
+            drawerLabel:'ChangePassword'
         }
     },
 
@@ -147,10 +152,10 @@ const Drawer = createDrawerNavigator({
             drawerLabel:'KPI'
         }
     },
-    Time:{
-        screen:Timeline_Stacknavigator,
+    Refusede:{
+        screen:Refusede_Stacknavigator,
         navigationOptions:{
-            drawerLabel:'Time'
+            drawerLabel:'Refusede'
         }
     }
 },{

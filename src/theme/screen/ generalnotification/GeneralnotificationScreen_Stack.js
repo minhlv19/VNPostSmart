@@ -9,8 +9,8 @@ import GeneralnotificationScreenUsername from './GeneralnotificationScreen_Usern
 
 const GeneralnotificationScreenstack = createMaterialTopTabNavigator(
     {
-        Username: {screen: GeneralnotificationScreenUsername},
-        Name: {screen: GeneralnotificationScreenName},
+        'Thông báo chung': {screen: GeneralnotificationScreenUsername},
+        'Thông báo cá nhân': {screen: GeneralnotificationScreenName},
 
     },
     {
@@ -21,14 +21,14 @@ const GeneralnotificationScreenstack = createMaterialTopTabNavigator(
             activeTintColor: '#FFFFFF',
             inactiveTintColor: '#F8F8F8',
             style: {
-                backgroundColor: '#633689',
+                backgroundColor: '#284eac',
             },
             labelStyle: {
                 textAlign: 'center',
             },
             indicatorStyle: {
-                borderBottomColor: '#87B56A',
-                borderBottomWidth: 2,
+                borderBottomColor: '#284eac',
+
             },
         },
     }
