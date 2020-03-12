@@ -5,22 +5,18 @@ import Login from '../screen/login/Login';
 import DrawerNavigator from '../navigator/Drawer-navigator';
 import {createAppContainer} from 'react-navigation';
 
-/*class Main extends Component {
-    render() {
-        return (
-           <DrawerNavigator/> 
-        );
-    }
-}*/
+import SplashScreen from '../screen/login/SplashScreen';
+
+
 
 const Main = createStackNavigator({
-      Login: {screen: Login,
-          //xóa khoảng trắng header
-          navigationOptions: {header:null}},
+    ScreenLogin:{screen:SplashScreen,navigationOptions: {header:null}},
+        Login: {screen: Login,
+            navigationOptions: {header:null}},
       DrawerNavigator: {screen: DrawerNavigator, navigationOptions: {header:null}},
-  },
-  {
-      initialRouteName: 'Login',
-  });
+  },{
+    initialRouteName:'ScreenLogin'
+    }
+  );
 
 export default createAppContainer(Main);
