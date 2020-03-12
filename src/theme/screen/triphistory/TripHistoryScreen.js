@@ -8,19 +8,12 @@ export default class TripHistoryScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            val: 1,
+
             date: '',
             date_min:'',
             date_max: '',};
     }
 
-    renderElement() {
-        if (this.state.val === 1) {
-            return <TripHistoryScreenContainer/>;
-        } else {
-            return <TripHistoryScreenhoi/>;
-        }
-    }
     componentDidMount() {
         const that = this;
         const date = new Date().getDate();
@@ -43,19 +36,7 @@ export default class TripHistoryScreen extends Component {
     render() {
         return (
             <View style={{flex: 1}}>
-                <View style={{backgroundColor:'#22ffee'}}>
-                    <View style={{flexDirection: 'row', justifyContent: 'center',}}>
-                        <TouchableOpacity style={{flex: 1, alignItems: 'center'}}
-                                          onPress={() => this.setState({val: 1})}>
-                            <Text style={{fontSize: 18, padding: 10}}>Container</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={{flex: 1, alignItems: 'center', borderLeftWidth:1,
-                        borderLeftColor:'#969696'}}
-                                          onPress={() => this.setState({val: 2})}>
-                            <Text style={{fontSize: 18, padding: 10}}>Phản hồi</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
+
                 <View style={{width: '100%', height: 50, flexDirection: 'row', marginTop: 6, marginBottom: 5}}>
                     <TouchableOpacity style={{
                         marginLeft:5,
@@ -111,9 +92,6 @@ export default class TripHistoryScreen extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View>
-                    {this.renderElement()}
-                </View>
             </View>
         );
     }

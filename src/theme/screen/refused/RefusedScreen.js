@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {View,Text} from 'react-native'
-class TimesheetScreen extends Component {
+class RefusedScreen extends Component {
     render() {
         return (
             <View>
-                <Text>bang cham cong</Text>
+                <Text>Các chuyến từ chối / hủy</Text>
             </View>
         );
     }
 }
 
-export default TimesheetScreen;
+export default RefusedScreen;
