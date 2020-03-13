@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#284EAC',
-marginTop: 20
+    marginTop: 20
    //flexDirection: 'column',
   },
   logoContainer: {

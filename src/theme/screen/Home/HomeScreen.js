@@ -100,7 +100,6 @@ const HomeScreen = createBottomTabNavigator({
             activeTintColor: '#0137be',
             inactiveTintColor: 'gray',
         },
-    })
-;
+    });
 export default HomeScreen;
 
