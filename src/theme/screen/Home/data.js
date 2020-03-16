@@ -27,5 +27,10 @@ const Data = [
         "key": "598a67c478fee204ee51cd2d",
         "name": "Lệnh 7"
     }
+    ,
+    {
+        "key": "598a67c478f425ewr51cd2d",
+        "name": "Lệnh 8"
+    }
 ];
 export default Data;

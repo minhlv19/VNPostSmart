@@ -53,6 +53,25 @@ const Running = createMaterialTopTabNavigator({
             tabBarLabel: 'Hình ảnh',
         },
     },
-});
+},
+    {
+        tabBarPosition: 'top',
+        swipeEnabled: true,
+        animationEnabled: true,
+        tabBarOptions: {
+            activeTintColor: '#FFFFFF',
+            inactiveTintColor: '#F8F8F8',
+            style: {
+                backgroundColor: '#284eac',
+            },
+            labelStyle: {
+                textAlign: 'center',
+            },
+            indicatorStyle: {
+                borderBottomColor: '#284eac',
+            },
+        },
+    }
+    );
 
 export default createAppContainer(Running);
