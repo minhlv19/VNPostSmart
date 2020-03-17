@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     }
 });
 
-export default class Contact extends Component {
+export default class RunningStatus extends Component {
     render() {
         return (
             <View style={{flex: 1, marginTop: 22}}>
